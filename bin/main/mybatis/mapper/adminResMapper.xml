@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="golf.project.dao.AdminResDao">
+ 
+ <update id="cadcartsel" parameterType="int">
+ 	update res set cart=1, caddie=1 where resnum=#{resnum}
+ </update>
+ 
+ <delete id="deleteres" parameterType="int">
+   delete from res where resnum=#{resnum} 
+ </delete>
+ 
+ <select id="adminResList" resultType="golf.project.dto.AdminResDto">
+  select * from res
+  order by resdate 
+ </select>
+ 
+ <select id="count" resultType="int">
+  select count(*) from res
+ </select>
+ 
+ <select id="selres" resultType="golf.project.dto.AdminResDto">
+ 	select * from res where caddie=-1 and cart = -1
+ </select>
+ 
+ 
+ </mapper>

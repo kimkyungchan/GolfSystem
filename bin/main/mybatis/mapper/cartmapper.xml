@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="golf.project.dao.CartDao"> 
+	
+	<insert id="insertCart" parameterType="golf.project.dto.CartDto">
+		insert into cart_upload(productyear, maxspeed, maxdistance, weight, state) values(#{productyear},#{maxspeed},#{maxdistance},#{weight}, #{state});
+	</insert>
+	
+	<update id="updatestate" parameterType="map">
+		update cart_upload set state=#{state} where cartno=#{cartno} 
+	</update>
+	
+	<update id="assignstate" parameterType="int">
+		update cart_upload set state=1 where cartno=#{cartno} 
+	</update>
+	
+	<delete id="deleteCart" parameterType="int">
+		delete from cart_upload where cartno=#{cartno}
+	</delete>
+	
+	<select id="Cartlist" resultType="golf.project.dto.CartDto">
+		select * from cart_upload
+	</select>
+
+	<select id="waitCart" resultType="golf.project.dto.CartDto">
+		select * from cart_upload where state=2;
+	</select>
+	
+</mapper>  

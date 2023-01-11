@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="golf.project.dao.CaddieDao"> 
+
+	<insert id="insertCaddie" parameterType="golf.project.dto.CaddieDto">
+		insert into cad_upload(cadname, cadphone, cadcareer, cadage, cademail, state) values(#{cadname},#{cadphone},#{cadcareer},#{cadage},#{cademail},#{state})
+	</insert>
+	
+	<update id="updatestate" parameterType="map">
+		update cad_upload set state=#{state} where cadno=#{cadno} 
+	</update>
+	
+	<update id="assignstate" parameterType="int">
+		update cad_upload set state=1 where cadno=#{cadno} 
+	</update>
+	
+	<delete id="deleteCaddie" parameterType="int">
+		delete from cad_upload where cadno=#{cadno}
+	</delete>
+	
+	<select id="Caddielist" resultType="golf.project.dto.CaddieDto">
+		select * from cad_upload
+	</select>
+	
+	<select id="waitCaddie" resultType="golf.project.dto.CaddieDto">
+		select * from cad_upload where state=2;
+	</select>
+	
+</mapper>  

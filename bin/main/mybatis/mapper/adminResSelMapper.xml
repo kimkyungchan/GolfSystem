@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="golf.project.dao.AdminResSelDao">
+   
+   <insert id="insertSel" parameterType="golf.project.dto.AdminResSelDto">
+    insert into admin_res_sel(seldate, selcourse, seltime, selprice, state) values( #{seldate}, #{selcourse}, #{seltime},  #{selprice} , state = 0)   
+   </insert>
+   
+   <delete id="deletesel" parameterType="map">
+   	delete from admin_res_sel where seldate = #{ResDate} and seltime = #{restime} and selcourse = #{course}
+   </delete>
+   
+   <select id="selcourse" resultType="String">
+    select cname from course;
+   </select>
+   
+   	
+  
+  
+  </mapper>

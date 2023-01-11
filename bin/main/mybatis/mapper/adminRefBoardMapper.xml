@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="golf.project.dao.AdminRefBoardDao">
+  
+  <update id="addReadcount" parameterType="int">
+    update refboard set readcount = readcount + 1 where no=#{no}
+  </update>
+  
+  <delete id="deleteRef" parameterType="int">
+   delete from refboard where no=#{no}
+  </delete>
+  
+  <select id="refOne" parameterType="int" resultType="golf.project.dto.AdminRefBoardDto">
+    select * from refboard where no=#{no}
+  </select>
+  
+  <select id="count" resultType="int">
+    select count(*) from refboard
+  </select>
+  
+  
+  <select id="refList" parameterType="map" resultType="golf.project.dto.AdminRefBoardDto">
+    select * from refboard 
+    order by ref desc, re_step asc limit #{start}, #{count}
+  </select>
+  
+  <select id="refListSearch" parameterType="map" resultType="golf.project.dto.AdminRefBoardDto">
+  
+   select * from refboard
+   <where>
+          <choose>
+                  <when test="searchn == 0"> subject like concat('%',#{search},'%')</when>   
+                  <when test="searchn == 1"> content like concat('%',#{search},'%')</when>
+                  <when test="searchn == 2"> id like concat('%',#{search},'%')</when>               
+          </choose>
+   </where>
+   
+   order by regdate desc limit #{start} , #{count}
+</select>
+
+<select id="countSearch" resultType="int" parameterType="map">
+
+  select count(*) from refboard
+  <where>
+         <choose>
+                <when test="searchn == 0"> subject like concat('%',#{search},'%')</when>
+                <when test="searchn == 1"> content like concat('%',#{search},'%')</when>
+                <when test="searchn == 2"> id like concat('%',#{search},'%')</when>       
+         </choose> 
+  </where>
+</select>
+  </mapper>

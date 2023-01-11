@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="golf.project.dao.SalesDao"> 
+	
+	<insert id="insertSales" parameterType="golf.project.dto.SalesDto">
+		insert into pay_status values(#{resnum},#{paydate},#{price}, #{id}, #{course}, #{usetime})
+	</insert>
+	
+	<select id="selSales" resultType="golf.project.dto.SalesDto" parameterType="map">
+		select * from pay_status where <![CDATA[paydate <= #{end} and #{start} <= paydate]]> order by paydate
+	</select>
+	
+	
+</mapper>  

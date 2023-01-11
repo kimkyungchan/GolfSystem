@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="golf.project.dao.LockerDao"> 
+
+	<update id="updateloc" parameterType="golf.project.dto.LockerDto">
+			update lock_manage set id=#{id}, start=#{start}, end=#{end}, state='사용중' where lockno=#{lockno}
+	</update>
+
+	<select id="detaillock" resultType="golf.project.dto.LockerDto" parameterType="int">
+			select * from lock_manage where lockno=#{lockno}	
+	</select>
+	
+	<select id="locklist" resultType="golf.project.dto.LockerDto">
+			select * from lock_manage
+	</select>	
+</mapper>  

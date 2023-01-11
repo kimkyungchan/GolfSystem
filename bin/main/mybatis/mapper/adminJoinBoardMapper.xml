@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="golf.project.dao.AdminJoinBoardDao">
+  
+  <update id="addReadcount" parameterType="int">
+    update joinboard set readcount = readcount + 1 where no=#{no}
+  </update>
+  
+  <delete id="deleteJoin" parameterType="int">
+   delete from joinboard where no=#{no}
+  </delete>
+  
+  <select id="joinList" parameterType="map" resultType="golf.project.dto.AdminJoinBoardDto">
+    select * from joinboard 
+    order by no desc limit #{start}, #{count}
+  </select>
+  
+  <select id="count" resultType="int">
+    select count(*) from joinboard
+  </select>
+  
+  <select id="joinOne" parameterType="int" resultType="golf.project.dto.AdminJoinBoardDto">
+    select * from joinboard where no=#{no}
+  </select>
+  
+  <select id="joinListSearch" parameterType="map" resultType="golf.project.dto.AdminJoinBoardDto">
+    select * from joinboard
+    <where>
+          <choose>
+                 <when test="searchn == 0"> subject like concat('%',#{search},'%')</when>
+                 <when test="searchn == 1"> content like concat('%',#{search},'%')</when>
+                 <when test="searchn == 2"> id like concat('%',#{search},'%')</when>
+          </choose>
+    </where>
+    order by no desc limit #{start}, #{count}
+  </select>
+  
+  <select id="countSearch" parameterType="map" resultType="int">
+     select count(*) from joinboard
+           <where>
+                 <choose>
+                         <when test="searchn == 0">subject like concat('%',#{search},'%')</when>
+                         <when test="searchn == 1">content like concat('%',#{search},'%')</when>
+                         <when test="searchn == 2"> id like concat('%',#{search},'%')</when>
+                 </choose>
+           </where>
+  </select>
+  
+  
+  </mapper>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="golf.project.dao.AdminResWaitDao">
+  
+  <select id="adminResWaitList" parameterType="map" resultType="golf.project.dto.AdminResWaitDto">
+   select * from res_wait
+   order by signupdate limit #{start}, #{count}
+  </select>
+  
+  <select id="count" resultType="int">
+   select count(*) from res_wait
+  </select>
+  
+  <select id="resWaitCheck" resultType="int" parameterType="golf.project.dto.AdminResWaitDto">
+ 
+  select count(*) from res 
+  where  (resdate, restime) in 
+  (select hopeday, hopetime from 
+  res_wait where hopeday=#{hopeday} and hopecourse=#{hopecourse} and hopetime=#{hopetime});
+  
+  
+  
+  </select>
+
+  
+  </mapper>
