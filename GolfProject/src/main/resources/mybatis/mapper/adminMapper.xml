@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="golf.project.dao.AdminDao">  
+  
+<select parameterType="golf.project.dto.AdminDto" id="login" resultType="golf.project.dto.AdminDto">
+   select * from manager where Admin_ID=#{Admin_ID} and Admin_PASS=#{Admin_PASS} 
+</select>
+
+</mapper>

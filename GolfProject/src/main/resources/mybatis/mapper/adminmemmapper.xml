@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="golf.project.dao.MemDao"> 
+	<select id="member" resultType="golf.project.dto.MemDto">
+ 	    	select * from mem
+	</select>
+	<select id="memuse" resultType="golf.project.dto.PaystatusDto" parameterType="String">
+ 	    	select * from pay_status where ID=#{id}
+	</select>
+	
+	<delete id="delmem" parameterType="String">
+			delete from mem where id=#{id}
+	</delete>
+</mapper>  

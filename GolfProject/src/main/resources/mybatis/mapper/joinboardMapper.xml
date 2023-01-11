@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="golf.project.member.board.dao.JoinboardDao">
+  <select id="joinboardListSearch" parameterType="map" resultType="golf.project.member.board.dto.JoinboardDto">
+select * from joinboard
+<where>
+	<choose>
+		<when test="searchn == 0">subject like concat('%',#{search},'%')</when>
+		<when test="searchn == 1">content like concat('%',#{search},'%')</when>
+		<when test="searchn == 2">id like concat('%',#{search},'%')</when>
+	</choose>
+</where>
+order by regdate desc limit #{start},#{count}
+</select>
+<select id="countSearch" resultType="int" parameterType="map">
+select count(*) from joinboard
+<where>
+	<choose>
+		<when test="searchn==0">subject like concat('%',#{search},'%')</when>
+		<when test="searchn == 1">content like concat('%',#{search},'%')</when>
+		<when test="searchn == 2">id like concat('%',#{search},'%')</when>
+	</choose>
+</where>
+</select>
+</mapper>
