@@ -13,7 +13,11 @@
 
 ## Summary
   * 최근 "골프왕", "편먹고 공치리" 등등 골프 예능이 급증함에 따라 중/장년층부터 2030세대까지 골프에 관심도가 
+    
+    
     증가하고 있다. 이에 기존의 골프장 예약 & 관리 시스템에 흥미가 생겼고, 보다 편리한 시스템을 구축하고자 
+    
+    
     프로젝트를 시작하게 되었다.
     
     
@@ -50,7 +54,7 @@
 
 
 ## Main
-<img src="https://user-images.githubusercontent.com/84487848/212255240-dc0e47df-4d8e-4173-9fce-68a2535a347d.png" width="380" height="350"> <img src="https://user-images.githubusercontent.com/84487848/212255196-bf609171-4c1f-4371-9b84-1129aa51da7e.png" width="380" height="350">
+<img src="https://user-images.githubusercontent.com/84487848/212255240-dc0e47df-4d8e-4173-9fce-68a2535a347d.png" width="390" height="350"> <img src="https://user-images.githubusercontent.com/84487848/212255196-bf609171-4c1f-4371-9b84-1129aa51da7e.png" width="390" height="350">
 
 
 ---
